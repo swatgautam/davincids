@@ -8,7 +8,7 @@ class Node:
 
 class BinarySearchTree:
     def __init__(self):
-        self.root = None
+        self.__root__ = None
 
     def __insert__(self,current_node, data_value):
         if current_node is None:
@@ -20,4 +20,18 @@ class BinarySearchTree:
         return current_node
 
     def insert(self, data_value):
-        self.root = self.__insert__(self.root, data_value)
+        self.__root__ = self.__insert__(self.__root__, data_value)
+    
+    def __search__(self,current_node,data_value):
+        if current_node is None:
+            return False
+        if current_node.data is data_value:
+            return True
+        if data_value > current_node.data:
+            return self.__search__(current_node.right_child,data_value)
+        if data_value < current_node.data:
+            return self.__search__(current_node.left_child,data_value)
+    
+    def search(self,data_value):
+       return self.__search__(self.__root__,data_value)
+
