@@ -35,3 +35,13 @@ class BinarySearchTree:
     def search(self,data_value):
        return self.__search__(self.__root__,data_value)
 
+
+    def __inorder__(self,current_node):
+        if current_node is None:
+            return None
+        self.__inorder__(current_node.left_child)
+        print(current_node.data)
+        self.__inorder__(current_node.right_child)
+
+    def inorder(self):
+        self.__inorder__(self.__root__)
