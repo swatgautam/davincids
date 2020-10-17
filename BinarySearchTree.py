@@ -1,18 +1,17 @@
-
-class Node:
-    def __init__(self,data_value):
-        self.data = data_value
-        self.left_child = None
-        self.right_child = None
-    
-
 class BinarySearchTree:
+    
+    class Node:
+        def __init__(self,data_value):
+            self.data = data_value
+            self.left_child = None
+            self.right_child = None
+    
     def __init__(self):
         self.__root__ = None
 
     def __insert__(self,current_node, data_value):
         if current_node is None:
-            return Node(data_value)
+            return BinarySearchTree.Node(data_value)
         if data_value < current_node.data:
             current_node.left_child = self.__insert__(current_node.left_child,data_value)
         if data_value > current_node.data:
@@ -35,7 +34,6 @@ class BinarySearchTree:
     def search(self,data_value):
        return self.__search__(self.__root__,data_value)
 
-
     def __inorder__(self,current_node):
         if current_node is None:
             return None
@@ -45,3 +43,9 @@ class BinarySearchTree:
 
     def inorder(self):
         self.__inorder__(self.__root__)
+
+    def construct_from_list(self,input_list):
+        
+        for x in input_list:
+            self.insert(x)
+
